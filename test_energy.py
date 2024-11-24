@@ -1,5 +1,5 @@
 import numpy as np
-from your_script import energy  # Replace 'your_script' with your script's file name (without .py)
+from Var_method import energy
 
 def test_energy_exact():
     a_exact = 8 / (np.pi * 9)
