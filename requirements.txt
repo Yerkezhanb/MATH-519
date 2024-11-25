@@ -1,14 +1,27 @@
-numpy==1.25.0
-scipy>=1.11.0
-matplotlib==3.8.0
-pytest==7.4.0  # For testing
-jupyter==1.0.0 # For notebooks
-pandas==2.1.0
-requests>=2.31.0
-numpy==1.25.0
-scipy==1.11.1
+name: Python CI
 
-- name: Set up Python
-  uses: actions/setup-python@v4
-  with:
-    python-version: 3.9
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Tests
+        run: |
+          pytest
